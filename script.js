@@ -57,7 +57,7 @@ class WarningText extends Phaser.Scene {
     }
     preload() {
         this.load.path = './assets/';
-        //this.load.image('sectionimage', 'sectionimage.png');
+        this.load.image('Light', 'Light.png');
     }
     create(){
         const centerX = this.cameras.main.centerX;
@@ -70,6 +70,12 @@ This game has sequences of flashing lights.
 Caution Advised.`, {font: "24px Arial", align: "center"});
 this.wText.setPosition(centerX - this.wText.width/2, centerY - this.wText.height/2);
 
+this.light = this.add.image(
+    centerX,
+    150,
+    'Light',
+)
+
 this.time.delayedCall(24000, () => {
     this.cameras.main.fadeOut(8000, 0,0,0);
 });
@@ -77,7 +83,6 @@ this.time.delayedCall(24000, () => {
 this.time.delayedCall(32000, () => {
     this.scene.start('menuScreen');
 })
-
    }
     update(){}
 }
@@ -88,13 +93,25 @@ class MenuScreen extends Phaser.Scene {
     }
     preload() {
         this.load.path = './assets/';
-        //this.load.image('sectionimage', 'sectionimage.png');
+        this.load.image('Menu', 'Menu.png');
+        this.load.image('Triangle', 'Triangle.png');
     }
     create(){
         const centerX = this.cameras.main.centerX;
         const centerY = this.cameras.main.centerY;
 
-        this.text2 = this.add.text(centerX, centerY, "Menu Scene", {font: "48px Arial", align:"Center"});
+        this.menu = this.add.image(
+            250,
+            250,
+            'Menu',
+        )
+
+        this.triangle = this.add.image(
+            centerX,
+            centerY,
+            'Triangle',
+        )
+
     }
     update(){}
 }
