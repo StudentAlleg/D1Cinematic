@@ -4,7 +4,7 @@ class StudioLogo extends Phaser.Scene {
     }
     preload() {
         this.load.path = './assets/';
-        //this.load.image('sectionimage', 'sectionimage.png');
+        this.load.audio('Snap', 'Snap.mp3');
     }
     create(){
         const centerX = this.cameras.main.centerX;
@@ -32,6 +32,7 @@ class StudioLogo extends Phaser.Scene {
         })
         this.time.delayedCall(2000, () => {
             this.text1.setVisible(true);
+            this.sound.play('Snap');
             this.add.tween({
                 targets: this.coin2,
                 x: centerX,
@@ -42,6 +43,7 @@ class StudioLogo extends Phaser.Scene {
         this.time.delayedCall(4000, () => {
             this.text1.setVisible(false);
             this.text2.setVisible(true);
+            this.sound.play('Snap');
         });
 
         this.time.delayedCall(6000, () => {
@@ -63,7 +65,7 @@ class WarningText extends Phaser.Scene {
         const centerX = this.cameras.main.centerX;
         const centerY = this.cameras.main.centerY;
         
-        this.cameras.main.flash(8000, 0, 0, 0)
+        this.cameras.main.flash(8000, 0, 0, 0);
 
         this.wText = this.add.text(centerX, centerY, `Warning:
 This game has sequences of flashing lights.
@@ -95,11 +97,13 @@ class MenuScreen extends Phaser.Scene {
         this.load.path = './assets/';
         this.load.image('Menu', 'Menu.png');
         this.load.image('Triangle', 'Triangle.png');
+        this.load.audio('Cluck', 'Cluck.mp3');
     }
     create(){
         const centerX = this.cameras.main.centerX;
         const centerY = this.cameras.main.centerY;
 
+        this.sound.play('Cluck');
         this.menu = this.add.image(
             250,
             250,
