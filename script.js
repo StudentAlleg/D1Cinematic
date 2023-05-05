@@ -63,7 +63,10 @@ class WarningText extends Phaser.Scene {
         const centerX = this.cameras.main.centerX;
         const centerY = this.cameras.main.centerY;
         
-        this.wTextthis.text2 = this.add.text(centerX, centerY, "Studio", {font: "48px Arial", align:"Center"});
+        this.wText = this.add.text(centerX, centerY, `Warning:
+This game has sequences of flashing lights.
+Caution Advised.`, {font: "24px Arial", align: "center"});
+this.wText.setPosition(centerX - this.wText.width/2, centerY - this.wText.height/2);
     }
     update(){}
 }
